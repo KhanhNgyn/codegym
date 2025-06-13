@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    height: 280px;
+}
+.item {
+    width: 25%;
+    text-align: center;
+    border: 1px lightgray solid;
+    overflow: hidden;
+}
+.item:hover {
+    border: 1px solid;
+    cursor: pointer;
+}
+.item img {
+    width: 100%;
+}

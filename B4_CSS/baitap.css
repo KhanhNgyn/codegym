@@ -1,0 +1,24 @@
+h4 {
+    border: 20px #CF5B5F dashed;
+    background-color: #4db6ac;
+    padding: 50px 40px 20px;
+    margin: 550px;
+
+}
+.out {
+    width: 350px;
+    height: 195px;
+    background:limegreen ;
+    padding: 50px;
+}
+
+.in {
+    background: gray;
+    width: 250px;
+    color: limegreen;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    border: 50px white solid;
+    margin: auto;
+}

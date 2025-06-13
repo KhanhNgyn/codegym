@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    flex-wrap: wrap;
+}
+.logo {
+    height: 50px;
+    width: 30%;
+    border: 1px solid black;
+}
+.banner {
+    height: 50px;
+    /* 70% - 1 - 1 - 1 - 1 */
+    width: calc(70% - 4px);
+    border: 1px solid black;
+}

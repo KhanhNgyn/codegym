@@ -1,0 +1,83 @@
+.header {
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    margin-bottom: 10px;
+    display: flex;
+}
+.menu, .login {
+    width: 50%;
+    height: 50px;
+}
+.login {
+    text-align: right;
+    line-height: 50px;
+    margin-right: 20px;
+}
+.menu {
+    display: flex;
+}
+.logo {
+    font-weight: bold;
+}
+.item {
+    line-height: 50px;
+    padding: 0 20px;
+    border: 1px solid;
+}
+.item:hover {
+    background-color: lightgray;
+}
+.main {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+.col1 {
+    width: 15%;
+    height: 600px;
+    border: 1px solid;
+}
+.col1-item {
+    width: 100%;
+    color: blue;
+    text-align: center;
+    margin: 10px;
+}
+.col2 {
+    width: 70%;
+    height: 600px;
+    border: 1px solid;
+}
+.ads {
+    width: 80%;
+    height: 80px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 10px 10%;
+}
+.footer {
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+}
+@media only screen and (max-width: 900px) {
+    /* kich co man hinh < 900px se ap dung thang ben duoi */
+    .right {
+        display: none;
+    }
+    .left {
+        width: 30%
+    }
+}
+@media only screen and (max-width: 900px) {
+    /* kich co man hinh < 900px se ap dung thang ben duoi */
+    .left {
+        display: none;
+    }
+    .mid {
+        width: 100%
+    }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .box1:hover {
+            background: yellow;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: grey;
+            transition: 1s;
+        }
+        .box2:hover {
+            background-color: orange;
+            margin-left: 15px;
+            border: 10px solid blue;
+            border-radius: 50%;
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<!--
+   Khi di chuot len thi:
+   - di sang phai 15px
+   - them border 10px
+   - bien thanh hinh tron
+-->
+<div class="box2"></div>
+</body>
+</html>
