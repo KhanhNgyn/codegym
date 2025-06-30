@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sổ Tiết Kiệm</title>
+  <style>
+    .item {
+      border: 1px solid blue;
+      padding: 10px;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    td, th {
+      border: 1px solid black;
+      padding: 5px 10px;
+    }
+    input {
+      margin: 3px;
+    }
+  </style>
+</head>
+<body>
+<h2>Thêm Sổ Tiết Kiệm</h2>
+<div class="item">
+  <input type="text" id="maSo" placeholder="Mã số (tối đa 5 ký tự)">
+  <input type="text" id="loai" placeholder="Loại tiết kiệm">
+  <input type="text" id="hoTen" placeholder="Họ tên khách hàng">
+  <input type="text" id="cmnd" placeholder="CMND">
+  <input type="text" id="ngayMo" placeholder="Ngày mở (YYYY-MM-DD)">
+  <input type="number" id="soTien" placeholder="Số tiền gửi">
+  <button onclick="themSTK()">Thêm</button>
+</div>
+
+<div id="thongBao"></div>
+<div id="danhSach"></div>
+
+<script>
+  class SoTietKiem {
+    constructor(maSo, loai, hoTen, cmnd, ngayMo, soTien) {
+      this.maSo = maSo;
+      this.loai = loai;
+      this.hoTen = hoTen;
+      this.cmnd = cmnd;
+      this.ngayMo = ngayMo;
+      this.soTien = soTien;
+    }
+  }
+
+  let dsSTK = [];
+
+  function themSTK() {
+    const maSo = document.getElementById('maSo').value.trim();
+    const loai = document.getElementById('loai').value.trim();
+    const hoTen = document.getElementById('hoTen').value.trim();
+    const cmnd = document.getElementById('cmnd').value.trim();
+    const ngayMo = document.getElementById('ngayMo').value.trim();
+    const soTien = parseFloat(document.getElementById('soTien').value.trim());
+
+    if (dsSTK.find(x => x.maSo === maSo)) {
+      alert('Mã số tiết kiệm đã tồn tại!');
+      return;
+    }
+
+
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(ngayMo)) {
+      alert('Ngày mở không đúng định dạng (YYYY-MM-DD)');
+      return;
+    }
+
+    const stk = new SoTietKiem(maSo, loai, hoTen, cmnd, ngayMo, soTien);
+    dsSTK.push(stk);
+
+    alert('Thêm thành công!');
+    hienThi();
+  }
+
+  function hienThi() {
+    let html = `<table>
+                <tr>
+                    <th>Mã số</th>
+                    <th>Loại</th>
+                    <th>Họ tên</th>
+                    <th>CMND</th>
+                    <th>Ngày mở</th>
+                    <th>Số tiền</th>
+                    <th>Thao tác</th>
+                </tr>`;
+    for (let i = 0; i < dsSTK.length; i++) {
+      const stk = dsSTK[i];
+      html += `<tr>
+                    <td>${stk.maSo}</td>
+                    <td>${stk.loai}</td>
+                    <td>${stk.hoTen}</td>
+                    <td>${stk.cmnd}</td>
+                    <td>${stk.ngayMo}</td>
+                    <td>${stk.soTien}</td>
+                    <td><button onclick="xoaSTK('${stk.maSo}')">Xoá</button></td>
+                </tr>`;
+    }
+    html += `</table>`;
+    document.getElementById('danhSach').innerHTML = html;
+  }
+
+  function xoaSTK(maSo) {
+    const viTri = dsSTK.findIndex(x => x.maSo === maSo);
+    if (viTri === -1) {
+      alert('Mã số không tồn tại!');
+      return;
+    }
+    const xacNhan = confirm('Bạn có chắc chắn muốn xoá?');
+    if (xacNhan) {
+      dsSTK.splice(viTri, 1);
+      alert('Xoá thành công!');
+      hienThi();
+    }
+  }
+</script>
+</body>
+</html>

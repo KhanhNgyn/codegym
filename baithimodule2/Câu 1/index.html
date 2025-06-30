@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mảng số nguyên</title>
+  <style>
+    body { font-family: Arial; }
+    input, button { margin: 5px; }
+    .result { margin-top: 10px; }
+  </style>
+</head>
+<body>
+<h3>Nhập mảng số nguyên a (tối đa 50 phần tử, cách nhau bởi dấu phẩy):</h3>
+<input type="text" id="inputArray" placeholder="VD: 3,5,6,7,8">
+<button onclick="xuLyMang()">Xử lý</button>
+
+<div class="result">
+  <p id="mangA"></p>
+  <p id="mangB"></p>
+</div>
+
+<script>
+  function laSoNguyenTo(n) {
+    if (n < 2) return false;
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+      if (n % i === 0) return false;
+    }
+    return true;
+  }
+
+  function xuLyMang() {
+    const input = document.getElementById("inputArray").value.trim();
+    const arrayA = input.split(",").map(x => parseInt(x.trim()));
+
+    if (arrayA.length > 50) {
+      alert("Số lượng phần tử phải nhỏ hơn hoặc bằng 50.");
+      return;
+    }
+
+    const arrayB = arrayA.filter(laSoNguyenTo);
+
+    document.getElementById("mangA").innerText = "Mảng a: " + arrayA.join(", ");
+    document.getElementById("mangB").innerText = "Mảng b (số nguyên tố): " + arrayB.join(", ");
+  }
+</script>
+</body>
+</html>
